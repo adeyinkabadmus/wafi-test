@@ -25,7 +25,7 @@ const transfer = (from, to, amount) => {
     }
   }
   return {
-    from: { [from]: balance },
+    from: { [from]: debitBalance },
     to: { [to]: creditBalance },
   };
 };
@@ -70,6 +70,7 @@ const debit = (userId, amount) => {
  */
 const createOne = (userId, amount = 0) => {
 	accounts[userId] = amount;
+  return accounts[userId];
 };
 
 /**
@@ -78,11 +79,12 @@ const createOne = (userId, amount = 0) => {
  * @param {number} userId 
  * @returns {number}
  */
-const getOne = (userId) => {
+const findOne = (userId) => {
   return accounts[userId];
 };
 
-return {
+export {
   createOne,
-  transfer
+  transfer,
+  findOne,
 };
