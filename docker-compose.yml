@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: rasaq-wafi-test
+    restart: always
+    stdin_open: true
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: "node index.js"
+
