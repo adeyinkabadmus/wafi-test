@@ -1,3 +1,5 @@
+import { createOne as createAccount } from "./account.js";
+
 let lastId = 0;
 
 let users = {};
@@ -39,6 +41,24 @@ const createOne = (name) => {
 };
 
 /**
+ * creates a user profile and
+ * also creates a account
+ * profile
+ *
+ * @param {string} name
+ * @param {number} amount
+ * @returns {{name: string, id: number, balance: number}}
+ */
+const createProfile = (name, amount = 0) => {
+	const user = createOne(name);
+	const account = createAccount(user.id, amount);
+	return {
+		...user,
+		balance: account.balance,
+	};
+};
+
+/**
  * deletes a user
  *
  * @param {number} id
@@ -52,4 +72,4 @@ const deleteAll = () => {
 	users = {};
 };
 
-export { findAll, findOne, createOne, deleteOne, deleteAll };
+export { findAll, findOne, createOne, deleteOne, deleteAll, createProfile };

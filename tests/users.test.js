@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { createOne, findAll, findOne } from "../services/user.js";
+import { createOne, createProfile, findAll, findOne } from "../services/user.js";
 
 describe("User management", () => {
 
@@ -14,6 +14,14 @@ describe("User management", () => {
 
     expect(user.id).toBe(1);
     expect(user.name).toBe(name);
+	});
+
+  it("creates a user profile", () => {
+    const name = "user1";
+    const user = createProfile(name);
+    
+    expect(user.name).toBe(name);
+    expect(user.balance).toBe(0);
 	});
 
 	it("returns an array of users", () => {
