@@ -10,6 +10,10 @@ const addUser = (name, amount = 0) => {
   };
 };
 
+const getAccountBalance = (userId) => {
+  return AccountService.findOne(userId)?.balance;
+};
+
 // const transferFund = (userId, amount) => {
 //   return AccountService.de(user.id, amount);
 // };
@@ -17,13 +21,13 @@ const addUser = (name, amount = 0) => {
 
 console.log(addUser("user a", 10));
 
-console.log(addUser("user a", 25));
+console.log(addUser("user b", 25));
 
 AccountService.transfer(1, 2, 10);
 
 console.log("All users ", UserService.findAll());
 
-console.log("User 1 ", AccountService.findOne(1));
+console.log("User 1 ", getAccountBalance(1));
 
-console.log("User 2 ", AccountService.findOne(2));
+console.log("User 2 ", getAccountBalance(2));
 
